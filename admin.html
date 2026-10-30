@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Console | Tarun Portfolio</title>
+  <meta name="description" content="Admin dashboard to manage projects and blog posts for Tarun's portfolio." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS & Shared Config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/tailwind-config.js"></script>
+  <link rel="stylesheet" href="assets/style.css" />
+
+  <!-- Dark Mode Init Script (Avoids FOUC) -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('tarun_theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {
+        console.warn('Dark mode init error:', e);
+      }
+    })();
+  </script>
+</head>
+<body class="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-orange-500 selection:text-white">
+
+  <!-- Skip to Content -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 px-4 py-2 bg-primary text-white font-medium rounded-full shadow-lg outline-none ring-2 ring-primary">
+    Skip to content
+  </a>
+
+  <!-- Shared Header -->
+  <header class="sticky top-0 z-40 w-full border-b border-slate-200/80 dark:border-slate-800/80 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Tarun Home">
+        <div class="w-8 h-8 rounded-xl bg-[#dc3c19] text-white flex items-center justify-center font-bold text-sm tracking-wider shadow-sm group-hover:scale-105 transition-transform">
+          T
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-slate-900 dark:text-white text-sm tracking-tight leading-none">
+            Tarun
+          </span>
+          <span class="text-[10px] font-mono text-slate-500 dark:text-slate-400 leading-tight">
+            Admin Console
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-1 bg-slate-100 dark:bg-slate-800/60 p-1 rounded-full border border-slate-200/60 dark:border-slate-700/60" aria-label="Main Navigation">
+        <a href="index.html" data-nav-page="home" class="px-4 py-1.5 rounded-full text-xs font-medium transition-colors">Home</a>
+        <a href="projects.html" data-nav-page="projects" class="px-4 py-1.5 rounded-full text-xs font-medium transition-colors">Projects</a>
+        <a href="blog.html" data-nav-page="blog" class="px-4 py-1.5 rounded-full text-xs font-medium transition-colors">Blog</a>
+        <a href="connect.html" data-nav-page="connect" class="px-4 py-1.5 rounded-full text-xs font-medium transition-colors">Connect</a>
+      </nav>
+
+      <!-- Right Action Controls -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button type="button" class="theme-toggle p-2 rounded-full text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle dark mode">
+          <svg class="icon-sun w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <svg class="icon-moon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+
+        <a href="connect.html" class="inline-flex items-center justify-center px-4 py-2 rounded-full bg-[#dc3c19] hover:bg-[#b52603] text-white text-xs font-semibold shadow-sm hover:shadow transition-all">
+          Say Hello
+        </a>
+
+        <button id="mobile-menu-btn" type="button" class="md:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Open mobile navigation menu" aria-expanded="false">
+          <svg class="icon-menu-open w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg class="icon-menu-close w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 pt-3 pb-5 space-y-2">
+      <a href="index.html" data-nav-page="home" class="block px-4 py-2 rounded-xl text-sm font-medium">Home</a>
+      <a href="projects.html" data-nav-page="projects" class="block px-4 py-2 rounded-xl text-sm font-medium">Projects</a>
+      <a href="blog.html" data-nav-page="blog" class="block px-4 py-2 rounded-xl text-sm font-medium">Blog</a>
+      <a href="connect.html" data-nav-page="connect" class="block px-4 py-2 rounded-xl text-sm font-medium">Connect</a>
+      <a href="admin.html" class="block px-4 py-2 rounded-xl text-sm font-medium text-primary font-bold">Admin Console</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content" class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 py-10 sm:py-14 space-y-10">
+
+    <!-- ADMIN LOCKED STATE -->
+    <div id="admin-login-view" class="max-w-md mx-auto py-12">
+      <div class="p-8 rounded-3xl bg-white dark:bg-slate-850 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6 text-center">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-orange-100 dark:bg-orange-950/60 text-[#dc3c19] flex items-center justify-center">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+          </svg>
+        </div>
+
+        <div>
+          <h1 class="text-2xl font-bold text-slate-900 dark:text-white">Tarun's Admin Console</h1>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+            Authenticate to add or remove projects and blog posts.
+          </p>
+        </div>
+
+        <form id="admin-page-login-form" class="space-y-4 text-left">
+          <div>
+            <label for="admin-page-passcode" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+              Admin Passcode
+            </label>
+            <input type="password" id="admin-page-passcode" placeholder="Enter passcode (default: xyz)" required class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm focus:border-primary focus:ring-2 focus:ring-primary/20" />
+            <p id="admin-page-login-error" class="text-xs text-red-500 mt-1.5 hidden"></p>
+          </div>
+
+          <button type="submit" class="w-full py-2.5 rounded-xl bg-[#dc3c19] hover:bg-[#b52603] text-white font-semibold text-sm transition-colors shadow-sm">
+            Unlock Admin Console
+          </button>
+        </form>
+
+        <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[11px] text-slate-500 text-left">
+          <span class="font-bold text-slate-700 dark:text-slate-300">Default passcode:</span> <code class="font-mono text-primary font-bold">xyz</code>
+          <p class="mt-1">Changes are saved in your browser and instantly update all pages (Home, Projects, Blog, Feed).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADMIN AUTHENTICATED DASHBOARD -->
+    <div id="admin-dashboard-view" class="hidden space-y-10">
+
+      <!-- Top Dashboard Header & Controls -->
+      <div class="p-6 rounded-3xl bg-slate-900 text-white dark:bg-slate-850 dark:border dark:border-slate-800 shadow-lg flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2 text-xs font-mono text-emerald-400 mb-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>ADMIN MODE ACTIVE</span>
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Portfolio Content Manager</h1>
+          <p class="text-xs text-slate-300 mt-1 max-w-xl">
+            You have full control to add new projects, publish blog posts, and delete existing entries with one click.
+          </p>
+        </div>
+
+        <!-- Quick actions -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button type="button" onclick="openAddProjectModal()" class="px-4 py-2 rounded-full bg-[#dc3c19] hover:bg-[#b52603] text-white text-xs font-bold shadow-sm transition-all flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+            </svg>
+            <span>+ Add Project</span>
+          </button>
+
+          <button type="button" onclick="openAddPostModal()" class="px-4 py-2 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold shadow-sm transition-all flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+            </svg>
+            <span>+ Write Post</span>
+          </button>
+
+          <button type="button" id="admin-logout-btn" class="px-3.5 py-2 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-slate-700 transition-colors">
+            Exit Admin
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Counters & Stats -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-850 border border-slate-200 dark:border-slate-800 shadow-xs">
+          <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Projects</span>
+          <div id="stat-projects-count" class="text-3xl font-extrabold text-slate-900 dark:text-white mt-1">3</div>
+          <span class="text-[11px] text-slate-400 mt-1 block">Visible on Home &amp; Projects page</span>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-850 border border-slate-200 dark:border-slate-800 shadow-xs">
+          <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Blog Posts</span>
+          <div id="stat-posts-count" class="text-3xl font-extrabold text-slate-900 dark:text-white mt-1">6</div>
+          <span class="text-[11px] text-slate-400 mt-1 block">Visible on Home &amp; Blog page</span>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-850 border border-slate-200 dark:border-slate-800 shadow-xs">
+          <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Storage Engine</span>
+          <div class="text-lg font-bold text-emerald-600 dark:text-emerald-400 mt-2">Active (LocalStorage)</div>
+          <span class="text-[11px] text-slate-400 mt-1 block">Persists across reloads &amp; pages</span>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-850 border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col justify-between">
+          <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Backup &amp; Reset</span>
+          <div class="flex items-center gap-2 mt-2">
+            <button type="button" id="admin-export-btn" class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-xs font-semibold text-slate-700 dark:text-slate-300">
+              Export JSON
+            </button>
+            <button type="button" id="admin-reset-btn" class="px-3 py-1.5 rounded-lg bg-red-50 dark:bg-red-950/40 hover:bg-red-100 text-xs font-semibold text-red-600 dark:text-red-400">
+              Reset Seed
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECTS MANAGEMENT SECTION -->
+      <section class="space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+          <div class="flex items-center gap-3">
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white">Manage Projects</h2>
+            <span id="admin-projects-badge" class="px-2.5 py-0.5 rounded-full text-xs font-mono bg-orange-100 dark:bg-orange-950/60 text-[#dc3c19] font-bold">
+              3 items
+            </span>
+          </div>
+          <button type="button" onclick="openAddProjectModal()" class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#dc3c19] hover:underline">
+            <span>+ Add new project entry</span>
+          </button>
+        </div>
+
+        <!-- Dynamic Projects Table / Cards -->
+        <div id="admin-projects-list" class="space-y-3">
+          <!-- Populated by JavaScript -->
+        </div>
+      </section>
+
+      <!-- BLOG POSTS MANAGEMENT SECTION -->
+      <section class="space-y-4 pt-6">
+        <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+          <div class="flex items-center gap-3">
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white">Manage Blog Posts &amp; Field Notes</h2>
+            <span id="admin-posts-badge" class="px-2.5 py-0.5 rounded-full text-xs font-mono bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 font-bold">
+              6 items
+            </span>
+          </div>
+          <button type="button" onclick="openAddPostModal()" class="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline">
+            <span>+ Write new blog post</span>
+          </button>
+        </div>
+
+        <!-- Dynamic Blog Posts Table / Cards -->
+        <div id="admin-posts-list" class="space-y-3">
+          <!-- Populated by JavaScript -->
+        </div>
+      </section>
+
+      <!-- View live pages bar -->
+      <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-850 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <h3 class="font-bold text-slate-900 dark:text-white text-sm">Preview Your Portfolio</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400">See how your changes look immediately across the site.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="index.html" class="px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold hover:border-slate-400 transition-colors">Home Preview</a>
+          <a href="projects.html" class="px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold hover:border-slate-400 transition-colors">Projects Preview</a>
+          <a href="blog.html" class="px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold hover:border-slate-400 transition-colors">Blog Preview</a>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Shared Footer -->
+  <footer class="border-t border-slate-200/80 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/50 py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-xl bg-[#dc3c19] text-white flex items-center justify-center font-bold text-sm">
+            T
+          </div>
+          <div>
+            <div class="text-sm font-bold text-slate-900 dark:text-white">Tarun</div>
+            <div class="text-xs text-slate-500">Student &amp; aspiring AI engineer • Builder. Learner. Language nerd.</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-6 text-xs text-slate-500 dark:text-slate-400">
+          <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+          <a href="projects.html" class="hover:text-primary transition-colors">Projects</a>
+          <a href="blog.html" class="hover:text-primary transition-colors">Blog</a>
+          <a href="connect.html" class="hover:text-primary transition-colors">Connect</a>
+          <a href="feed.xml" class="hover:text-primary transition-colors">RSS Feed</a>
+        </div>
+
+        <div class="text-xs text-slate-400 font-mono">
+          © 2026 Tarun • Built with craft and care
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shared Scripts & Admin Logics -->
+  <script src="assets/site.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loginView = document.getElementById('admin-login-view');
+      const dashView = document.getElementById('admin-dashboard-view');
+      const loginForm = document.getElementById('admin-page-login-form');
+      const loginError = document.getElementById('admin-page-login-error');
+      const passInput = document.getElementById('admin-page-passcode');
+      const logoutBtn = document.getElementById('admin-logout-btn');
+
+      function syncAdminPageState() {
+        const authed = window.isAdminAuthenticated && window.isAdminAuthenticated();
+        if (authed) {
+          loginView.classList.add('hidden');
+          dashView.classList.remove('hidden');
+          renderAdminDashboardTables();
+        } else {
+          loginView.classList.remove('hidden');
+          dashView.classList.add('hidden');
+        }
+      }
+
+      if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const val = (passInput.value || '').trim();
+          if (val === 'tarun2026') {
+            if (window.setAdminAuth) window.setAdminAuth(true);
+            loginError.classList.add('hidden');
+            syncAdminPageState();
+          } else {
+            loginError.textContent = 'Incorrect passcode. Please try again.';
+            loginError.classList.remove('hidden');
+          }
+        });
+      }
+
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+          if (window.setAdminAuth) window.setAdminAuth(false);
+          syncAdminPageState();
+        });
+      }
+
+      // Reset to seed
+      const resetBtn = document.getElementById('admin-reset-btn');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          const proceedReset = () => {
+            if (window.resetDataToSeed) window.resetDataToSeed();
+            renderAdminDashboardTables();
+          };
+
+          if (window.showConfirmModal) {
+            window.showConfirmModal({
+              title: 'Reset to Defaults',
+              message: 'Reset all projects and blog posts to original seed data? Any new additions will be replaced with defaults.',
+              confirmText: 'Reset All Data',
+              onConfirm: proceedReset
+            });
+          } else {
+            proceedReset();
+          }
+        });
+      }
+
+      // Export JSON
+      const exportBtn = document.getElementById('admin-export-btn');
+      if (exportBtn) {
+        exportBtn.addEventListener('click', () => {
+          const data = {
+            projects: window.getProjects ? window.getProjects() : [],
+            posts: window.getBlogPosts ? window.getBlogPosts() : [],
+            exportedAt: new Date().toISOString()
+          };
+          const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `tarun-portfolio-backup-${new Date().toISOString().slice(0, 10)}.json`;
+          a.click();
+          URL.revokeObjectURL(url);
+          if (window.showToast) window.showToast('Data exported successfully ✓');
+        });
+      }
+
+      // Render Dashboard tables for Projects & Posts
+      function renderAdminDashboardTables() {
+        const projects = window.getProjects ? window.getProjects() : [];
+        const posts = window.getBlogPosts ? window.getBlogPosts() : [];
+
+        // Update counters
+        const pCountEl = document.getElementById('stat-projects-count');
+        const bCountEl = document.getElementById('stat-posts-count');
+        const pBadge = document.getElementById('admin-projects-badge');
+        const bBadge = document.getElementById('admin-posts-badge');
+        if (pCountEl) pCountEl.textContent = projects.length;
+        if (bCountEl) bCountEl.textContent = posts.length;
+        if (pBadge) pBadge.textContent = `${projects.length} items`;
+        if (bBadge) bBadge.textContent = `${posts.length} items`;
+
+        // Render Projects
+        const projectsList = document.getElementById('admin-projects-list');
+        if (projectsList) {
+          if (projects.length === 0) {
+            projectsList.innerHTML = `<div class="p-8 text-center bg-slate-50 dark:bg-slate-800 rounded-2xl text-slate-500 text-xs">No projects found. Click "+ Add Project" above to create one.</div>`;
+          } else {
+            projectsList.innerHTML = projects.map(p => `
+              <div class="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-850 border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div class="space-y-1.5 flex-1">
+                  <div class="flex flex-wrap items-center gap-2 text-xs">
+                    <span class="font-bold text-slate-900 dark:text-white text-base">${p.title || p.name || 'Untitled'}</span>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${p.status === 'Complete' ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300' : 'bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300'}">
+                      ${p.status}
+                    </span>
+                    <span class="text-slate-400 font-mono text-[11px]">${p.category || 'ML & Systems'}</span>
+                    <span class="text-slate-400 font-mono text-[11px]">• ${p.year || '2026'}</span>
+                  </div>
+                  <p class="text-xs text-slate-600 dark:text-slate-300 line-clamp-2">${p.description}</p>
+                  <div class="flex flex-wrap gap-1.5 pt-1">
+                    ${(p.tags || []).map(t => `<span class="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-[10px] font-mono text-slate-600 dark:text-slate-400">${t}</span>`).join('')}
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-2 shrink-0">
+                  ${p.github ? `<a href="${p.github}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-xs font-semibold text-slate-700 dark:text-slate-300">GitHub</a>` : ''}
+                  ${p.demo ? `<a href="${p.demo}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 text-xs font-semibold">Demo</a>` : ''}
+                  <button type="button" onclick="adminDeleteProject('${p.id || p.title}')" class="px-3.5 py-1.5 rounded-lg bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/60 text-rose-600 dark:text-rose-400 text-xs font-bold transition-colors cursor-pointer flex items-center gap-1">
+                    <span>🗑️</span>
+                    <span>Delete</span>
+                  </button>
+                </div>
+              </div>
+            `).join('');
+          }
+        }
+
+        // Render Posts
+        const postsList = document.getElementById('admin-posts-list');
+        if (postsList) {
+          if (posts.length === 0) {
+            postsList.innerHTML = `<div class="p-8 text-center bg-slate-50 dark:bg-slate-800 rounded-2xl text-slate-500 text-xs">No blog posts found. Click "+ Write Post" above to create one.</div>`;
+          } else {
+            postsList.innerHTML = posts.map(post => `
+              <div class="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-850 border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div class="space-y-1.5 flex-1">
+                  <div class="flex flex-wrap items-center gap-2 text-xs">
+                    <span class="font-bold text-slate-900 dark:text-white text-base">${post.title}</span>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300">
+                      ${post.category || 'Devlog'}
+                    </span>
+                    <span class="text-slate-400 font-mono text-[11px]">${post.date}</span>
+                    <span class="text-slate-400 font-mono text-[11px]">• ${post.readTime || '3 min'}</span>
+                  </div>
+                  <p class="text-xs text-slate-600 dark:text-slate-300 line-clamp-2">${post.summary}</p>
+                </div>
+
+                <div class="flex items-center gap-2 shrink-0">
+                  <a href="post.html?slug=${encodeURIComponent(post.slug)}" class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-xs font-semibold text-slate-700 dark:text-slate-300">
+                    View
+                  </a>
+                  <button type="button" onclick="adminDeletePost('${post.slug || post.title}')" class="px-3.5 py-1.5 rounded-lg bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/60 text-rose-600 dark:text-rose-400 text-xs font-bold transition-colors cursor-pointer flex items-center gap-1">
+                    <span>🗑️</span>
+                    <span>Delete</span>
+                  </button>
+                </div>
+              </div>
+            `).join('');
+          }
+        }
+      }
+
+      window.adminDeleteProject = function (id) {
+        const executeDelete = () => {
+          if (window.deleteProject) window.deleteProject(id);
+          renderAdminDashboardTables();
+        };
+
+        if (window.showConfirmModal) {
+          window.showConfirmModal({
+            title: 'Delete Project',
+            message: 'Permanently delete this project? It will be removed immediately from the Home and Projects pages.',
+            confirmText: 'Delete Project',
+            onConfirm: executeDelete
+          });
+        } else {
+          executeDelete();
+        }
+      };
+
+      window.adminDeletePost = function (slug) {
+        const executeDelete = () => {
+          if (window.deleteBlogPost) window.deleteBlogPost(slug);
+          renderAdminDashboardTables();
+        };
+
+        if (window.showConfirmModal) {
+          window.showConfirmModal({
+            title: 'Delete Field Note',
+            message: 'Permanently delete this field note? It will be removed immediately from your public notebook.',
+            confirmText: 'Delete Note',
+            onConfirm: executeDelete
+          });
+        } else {
+          executeDelete();
+        }
+      };
+
+      // Listen for updates from modal saves or other tabs
+      window.addEventListener('storage', renderAdminDashboardTables);
+
+      // Initial sync
+      syncAdminPageState();
+    });
+  </script>
+</body>
+</html>

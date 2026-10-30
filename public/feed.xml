@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Tarun — Field Notes &amp; Systems</title>
+  <link>https://ais-dev-augyuqszpsmsbda4prqfcf-121027493637.asia-east1.run.app/</link>
+  <description>Documenting machine learning foundations, systems devlogs, and Japanese/Mandarin language acquisition.</description>
+  <language>en-us</language>
+  <lastBuildDate>Sun, 25 Oct 2026 15:00:00 GMT</lastBuildDate>
+  <atom:link href="https://ais-dev-augyuqszpsmsbda4prqfcf-121027493637.asia-east1.run.app/feed.xml" rel="self" type="application/rss+xml" />
+
+  <item>
+    <title>The 365-Day Japanese Journey: Day 1 Kickoff</title>
+    <link>https://ais-dev-augyuqszpsmsbda4prqfcf-121027493637.asia-east1.run.app/post.html?slug=japanese-journey-day-1</link>
+    <guid>https://ais-dev-augyuqszpsmsbda4prqfcf-121027493637.asia-east1.run.app/post.html?slug=japanese-journey-day-1</guid>
+    <pubDate>Sat, 28 Feb 2026 09:00:00 GMT</pubDate>
+    <description>Setting up the daily 90-minute routine, phonetic kana muscle memory, and configuring Anki decks powered by stroke-order mnemonics.</description>
+  </item>
+
+  <item>
+    <title>Daily TIL: LoRA Rank Trade-offs &amp; FlashAttention Intuitions</title>
+    <link>https://ais-dev-augyuqszpsmsbda4prqfcf-121027493637.asia-east1.run.app/post.html?slug=lora-rank-tradeoffs</link>
+    <guid>https://ais-dev-augyuqszpsmsbda4prqfcf-121027493637.asia-east1.run.app/post.html?slug=lora-rank-tradeoffs</guid>
+    <pubDate>Sun, 22 Feb 2026 14:00:00 GMT</pubDate>
+    <description>Why scaling rank r from 8 to 64 yields diminishing returns on stylistic alignment, but dramatic spikes in memory overhead.</description>
+  </item>
+
+  <item>
+    <title>Chinese Tones Contour Intuition: Singing Pitch Analogy</title>
+    <link>https://ais-dev-augyuqszpsmsbda4prqfcf-121027493637.asia-east1.run.app/post.html?slug=chinese-tones-contour</link>
+    <guid>https://ais-dev-augyuqszpsmsbda4prqfcf-121027493637.asia-east1.run.app/post.html?slug=chinese-tones-contour</guid>
+    <pubDate>Thu, 19 Feb 2026 11:30:00 GMT</pubDate>
+    <description>Treating the four tones as musical vocal warm-up intervals: First (high steady soprano), Second (questioning rise), Third (low dip), Fourth (sharp command).</description>
+  </item>
+
+  <item>
+    <title>Building PolyglotLens: From Idea to Working Vision-OCR Model</title>
+    <link>https://ais-dev-augyuqszpsmsbda4prqfcf-121027493637.asia-east1.run.app/post.html?slug=building-polyglotlens</link>
+    <guid>https://ais-dev-augyuqszpsmsbda4prqfcf-121027493637.asia-east1.run.app/post.html?slug=building-polyglotlens</guid>
+    <pubDate>Sat, 14 Feb 2026 16:45:00 GMT</pubDate>
+    <description>An end-to-end devlog detailing dataset distillation for historical vertical Japanese scripts and dense handwritten Chinese characters.</description>
+  </item>
+
+  <item>
+    <title>Architecting HanziFlow: Fast Local Radicals Storage with SQLite</title>
+    <link>https://ais-dev-augyuqszpsmsbda4prqfcf-121027493637.asia-east1.run.app/post.html?slug=architecting-hanziflow</link>
+    <guid>https://ais-dev-augyuqszpsmsbda4prqfcf-121027493637.asia-east1.run.app/post.html?slug=architecting-hanziflow</guid>
+    <pubDate>Tue, 10 Feb 2026 12:00:00 GMT</pubDate>
+    <description>Storing 214 Kangxi radicals, stroke decompositions, and audio waveforms offline in browser WASM threads.</description>
+  </item>
+
+  <item>
+    <title>Demystifying Small Language Models: What Actually Happens During Fine-Tuning</title>
+    <link>https://ais-dev-augyuqszpsmsbda4prqfcf-121027493637.asia-east1.run.app/post.html?slug=demystifying-small-language-models</link>
+    <guid>https://ais-dev-augyuqszpsmsbda4prqfcf-121027493637.asia-east1.run.app/post.html?slug=demystifying-small-language-models</guid>
+    <pubDate>Wed, 04 Feb 2026 08:00:00 GMT</pubDate>
+    <description>Peeling back the math of rank-decomposition matrices, low-rank adaptations, gradient flow across frozen weights, and testing local inferences with 1B-3B models.</description>
+  </item>
+
+  <item>
+    <title>Starting from Zero: Why I'm Learning Japanese and Mandarin Simultaneously</title>
+    <link>https://ais-dev-augyuqszpsmsbda4prqfcf-121027493637.asia-east1.run.app/post.html?slug=starting-from-zero</link>
+    <guid>https://ais-dev-augyuqszpsmsbda4prqfcf-121027493637.asia-east1.run.app/post.html?slug=starting-from-zero</guid>
+    <pubDate>Sun, 18 Jan 2026 10:00:00 GMT</pubDate>
+    <description>Exploring the cognitive synthesis of dual-orthography immersion, shared kanji/hanzi semantic anchors, and engineering a bidirectional spaced repetition engine.</description>
+  </item>
+</channel>
+</rss>

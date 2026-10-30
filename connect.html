@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connect — Tarun</title>
+  <meta name="description" content="Get in touch with Tarun to discuss AI architecture, language learning strategies, or collaborate on open-source projects." />
+  
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ais-dev-augyuqszpsmsbda4prqfcf-121027493637.asia-east1.run.app/connect.html" />
+  <meta property="og:title" content="Connect — Tarun" />
+  <meta property="og:description" content="Get in touch to discuss machine learning, language learning, or side projects." />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2005/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23dc3c19'/><text x='50' y='65' font-size='48' font-family='sans-serif' font-weight='bold' fill='white' text-anchor='middle'>T</text></svg>" />
+  <link rel="alternate" type="application/rss+xml" title="Tarun's Field Notes RSS Feed" href="feed.xml" />
+
+  <!-- Inline theme script -->
+  <script>
+    try {
+      const theme = localStorage.getItem('tarun-theme') || 
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if (theme === 'dark') document.documentElement.classList.add('dark');
+      else document.documentElement.classList.remove('dark');
+    } catch(e) {}
+  </script>
+
+  <!-- Tailwind CSS & Shared Assets -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/tailwind-config.js"></script>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body class="bg-[#faf9f6] text-[#111c2d] dark:bg-[#0b1120] dark:text-[#f1f5f9] min-h-screen flex flex-col font-sans transition-colors duration-200">
+
+  <!-- Accessible Skip to Content Link -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 px-4 py-2 bg-primary text-white font-medium rounded-full shadow-lg">
+    Skip to main content
+  </a>
+
+  <!-- Unified Header -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200/60 dark:border-slate-800/60 transition-colors">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Logo & Brand -->
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="flex items-center gap-3 group" aria-label="Tarun homepage">
+          <div class="w-9 h-9 rounded-full bg-[#dc3c19] flex items-center justify-center text-white font-bold text-lg shadow-sm group-hover:scale-105 transition-transform">
+            T
+          </div>
+          <div class="flex flex-col">
+            <div class="flex items-center gap-1.5">
+              <span class="font-bold tracking-tight text-slate-900 dark:text-white text-base">Tarun</span>
+              <span class="text-xs font-mono text-slate-400 dark:text-slate-500">「道」systems &amp; ai</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Open Status Pill -->
+        <div class="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800/80 border border-slate-200/60 dark:border-slate-700/60 text-xs text-slate-600 dark:text-slate-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Open to internships &amp; collabs</span>
+        </div>
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-1 bg-slate-100/90 dark:bg-slate-800/70 p-1.5 rounded-full border border-slate-200/60 dark:border-slate-700/50" aria-label="Main Navigation">
+        <a href="index.html" data-nav-page="home" class="px-4 py-1.5 rounded-full text-xs font-medium transition-colors">Home</a>
+        <a href="projects.html" data-nav-page="projects" class="px-4 py-1.5 rounded-full text-xs font-medium transition-colors">Projects</a>
+        <a href="blog.html" data-nav-page="blog" class="px-4 py-1.5 rounded-full text-xs font-medium transition-colors">Blog</a>
+        <a href="connect.html" data-nav-page="connect" class="px-4 py-1.5 rounded-full text-xs font-medium transition-colors">Connect</a>
+      </nav>
+
+      <!-- Right Action Controls -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button type="button" class="theme-toggle p-2 rounded-full text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle dark mode">
+          <svg class="icon-sun w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <svg class="icon-moon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+
+        <!-- Admin access button -->
+        <button type="button" class="admin-trigger-btn p-2 rounded-full text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="Admin access (Add/Delete)" aria-label="Admin settings">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+          </svg>
+        </button>
+
+        <a href="connect.html" class="inline-flex items-center justify-center px-4 py-2 rounded-full bg-[#dc3c19] hover:bg-[#b52603] text-white text-xs font-semibold shadow-sm hover:shadow transition-all">
+          Say Hello
+        </a>
+
+        <button id="mobile-menu-btn" type="button" class="md:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Open mobile navigation menu" aria-expanded="false">
+          <svg class="icon-menu-open w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg class="icon-menu-close w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 pt-3 pb-5 space-y-2">
+      <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-xs text-slate-600 dark:text-slate-300 mb-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>Open to internships &amp; collabs</span>
+      </div>
+      <a href="index.html" data-nav-page="home" class="block px-4 py-2 rounded-xl text-sm font-medium">Home</a>
+      <a href="projects.html" data-nav-page="projects" class="block px-4 py-2 rounded-xl text-sm font-medium">Projects</a>
+      <a href="blog.html" data-nav-page="blog" class="block px-4 py-2 rounded-xl text-sm font-medium">Blog</a>
+      <a href="connect.html" data-nav-page="connect" class="block px-4 py-2 rounded-xl text-sm font-medium">Connect</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content" class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 py-10 sm:py-14 space-y-12">
+
+    <!-- PAGE HEADER -->
+    <div class="space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-2 text-xs font-mono font-semibold text-primary">
+          <span>「一期一会」</span>
+          <span>•</span>
+          <span>OPEN CHANNELS // ICHIGO ICHIE</span>
+        </div>
+
+        <!-- Live IST Clock Component -->
+        <div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-slate-850 border border-slate-200 dark:border-slate-800 shadow-xs text-xs">
+          <span class="text-slate-400">⏱ LOCAL CADENCE:</span>
+          <span id="live-ist-clock" class="font-mono font-bold text-slate-800 dark:text-slate-200">
+            --:--:-- IST
+          </span>
+        </div>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+        Let's Connect.
+      </h1>
+      <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
+        Whether you want to discuss AI architecture, swap language learning strategies, collaborate on an open-source tool, or just say hello — my inbox is always open.
+      </p>
+    </div>
+
+    <!-- MAIN TWO COLUMN CONNECT SECTION -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+      <!-- LEFT COLUMN: Contact Form & Direct Email -->
+      <div class="lg:col-span-7 space-y-6">
+
+        <!-- Form Card -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-850 border border-slate-200/80 dark:border-slate-800 shadow-xs">
+          <div class="flex items-center justify-between mb-2">
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="text-primary">➤</span>
+              <span>Send a Note</span>
+            </h2>
+            <span class="text-[11px] font-mono text-slate-400">UTF-8 // Direct</span>
+          </div>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">
+            Drop a message directly to my desk. I respond within 24 to 48 hours.
+          </p>
+
+          <!-- TODO: Replace YOUR_FORM_ID with your Formspree form ID (e.g. https://formspree.io/f/mzbnpwxy) -->
+          <form id="connect-form" action="https://formspree.io/f/xwllqdny" method="POST" data-formspree class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="name" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                  Your Name *
+                </label>
+                <input type="text" id="name" name="name" required placeholder="e.g. Jane Doe / Linus" class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-800 dark:text-slate-200 placeholder:text-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" />
+              </div>
+
+              <div>
+                <label for="email" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                  Email Address *
+                </label>
+                <input type="email" id="email" name="email" required placeholder="jane@example.com" class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-800 dark:text-slate-200 placeholder:text-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" />
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <label for="message" class="block text-xs font-semibold text-slate-700 dark:text-slate-300">
+                  Message *
+                </label>
+                <span class="text-[10px] text-slate-400 font-mono">Markdown friendly</span>
+              </div>
+              <textarea id="message" name="message" rows="5" required placeholder="Tell me about what you're working on, an open question, or a project idea you'd like to explore..." class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-800 dark:text-slate-200 placeholder:text-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"></textarea>
+            </div>
+
+            <!-- Real status container (no alerts) -->
+            <div class="form-status hidden"></div>
+
+            <div class="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <span class="text-xs text-slate-500 flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                </svg>
+                No spam ever. Straight to personal inbox.
+              </span>
+
+              <button type="submit" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#dc3c19] hover:bg-[#b52603] text-white text-xs font-semibold shadow-xs hover:shadow transition-all">
+                <span>Send Message</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Direct Email Card -->
+        <div class="p-5 rounded-3xl bg-white dark:bg-slate-850 border border-slate-200/80 dark:border-slate-800 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-10 h-10 rounded-2xl bg-orange-50 dark:bg-orange-950/40 text-primary flex items-center justify-center shrink-0 text-lg">
+              ✉️
+            </div>
+            <div class="min-w-0">
+              <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400">Direct Email</div>
+              <div class="text-sm font-mono font-bold text-slate-800 dark:text-slate-200 truncate">
+                kumartarun3094@gmail.com
+              </div>
+            </div>
+          </div>
+
+          <button type="button" data-copy-email="kumartarun3094@gmail.com" class="px-4 py-2 rounded-xl bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-200 shadow-xs transition-colors shrink-0">
+            📋 Copy Email
+          </button>
+        </div>
+
+        <!-- Student Voice Workspace Box (Friendly & honest, no fake coordinates or corporate jargon) -->
+        <div class="p-6 rounded-3xl bg-white dark:bg-slate-850 border border-slate-200/80 dark:border-slate-800 shadow-xs flex flex-col sm:flex-row items-center gap-6">
+          <div class="w-full sm:w-44 h-32 rounded-2xl overflow-hidden shrink-0">
+            <!-- Workspace photo -->
+            <!-- TODO: Replace with your desk photo if desired -->
+            <img src="/public/assets/aistudio/Image_5_4dcb8bb9.jpeg" alt="Tarun's character study setup" class="w-full h-full object-cover" />
+          </div>
+          <div class="space-y-1.5">
+            <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-primary">Student Builder Note</span>
+            <h3 class="text-base font-bold text-slate-900 dark:text-white">Curiosity, Code &amp; Characters</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Every message is read personally. I'm always excited to exchange insights on language flashcard systems, open-weights ML models, or side-project architectures.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: Engagement Status, Directory & Timezone -->
+      <div class="lg:col-span-5 space-y-6">
+
+        <!-- Engagement Status Card -->
+        <div class="p-6 rounded-3xl bg-white dark:bg-slate-850 border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-mono uppercase tracking-wider text-slate-400">Engagement Status</span>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              Open to Opportunities
+            </span>
+          </div>
+
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">
+            Collaboration &amp; Inquiries
+          </h3>
+
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Currently open to summer/fall internships, student research discussions, and open-source contributions in ML, NLP, and language tech.
+          </p>
+
+          <div class="pt-2 text-xs font-mono text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+            <span>⏱ Expected reply: within 24 to 48 hours</span>
+          </div>
+        </div>
+
+        <!-- Directory: Social Links (Real Brand SVGs, rel="noopener noreferrer", aria-labels) -->
+        <div class="p-6 rounded-3xl bg-white dark:bg-slate-850 border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-mono uppercase tracking-wider text-slate-400">Directory</span>
+            <span class="text-[11px] font-mono text-slate-400">5 Profiles</span>
+          </div>
+
+          <h3 class="text-base font-bold text-slate-900 dark:text-white">
+            Find Me Across the Web
+          </h3>
+
+          <div class="space-y-2">
+            <!-- GitHub: TODO update URL -->
+            <a href="https://github.com/TODO-tarun" target="_blank" rel="noopener noreferrer" class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/60 dark:border-slate-800 flex items-center justify-between text-xs group transition-colors" aria-label="Tarun on GitHub">
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 fill-current text-slate-700 dark:text-slate-300" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <div class="font-semibold text-slate-800 dark:text-slate-200">GitHub</div>
+              </div>
+              <span class="text-slate-400 group-hover:text-primary transition-colors">↗</span>
+            </a>
+
+            <!-- LinkedIn: TODO update URL -->
+            <a href="https://linkedin.com/in/TODO-tarun" target="_blank" rel="noopener noreferrer" class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/60 dark:border-slate-800 flex items-center justify-between text-xs group transition-colors" aria-label="Tarun on LinkedIn">
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 fill-current text-sky-600" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <div class="font-semibold text-slate-800 dark:text-slate-200">LinkedIn</div>
+              </div>
+              <span class="text-slate-400 group-hover:text-primary transition-colors">↗</span>
+            </a>
+
+            <!-- X / Twitter: TODO update URL -->
+            <a href="https://x.com/TODO-tarun" target="_blank" rel="noopener noreferrer" class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/60 dark:border-slate-800 flex items-center justify-between text-xs group transition-colors" aria-label="Tarun on X Twitter">
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 fill-current text-slate-800 dark:text-slate-200" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                <div class="font-semibold text-slate-800 dark:text-slate-200">X (Twitter)</div>
+              </div>
+              <span class="text-slate-400 group-hover:text-primary transition-colors">↗</span>
+            </a>
+
+            <!-- Instagram: TODO update URL -->
+            <a href="https://instagram.com/TODO-tarun" target="_blank" rel="noopener noreferrer" class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/60 dark:border-slate-800 flex items-center justify-between text-xs group transition-colors" aria-label="Tarun on Instagram">
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 fill-current text-rose-500" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                <div class="font-semibold text-slate-800 dark:text-slate-200">Instagram</div>
+              </div>
+              <span class="text-slate-400 group-hover:text-primary transition-colors">↗</span>
+            </a>
+
+            <!-- YouTube: TODO update URL -->
+            <a href="https://youtube.com/@TODO-tarun" target="_blank" rel="noopener noreferrer" class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/60 dark:border-slate-800 flex items-center justify-between text-xs group transition-colors" aria-label="Tarun on YouTube">
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 fill-current text-red-600" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                <div class="font-semibold text-slate-800 dark:text-slate-200">YouTube</div>
+              </div>
+              <span class="text-slate-400 group-hover:text-primary transition-colors">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Global Rhythm & Timezone -->
+        <div class="p-6 rounded-3xl bg-white dark:bg-slate-850 border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-3">
+          <div class="flex items-center gap-2 text-xs font-mono text-secondary">
+            <span>🌐 GLOBAL RHYTHM</span>
+          </div>
+          <div class="flex items-baseline gap-2">
+            <span class="text-2xl font-bold font-mono text-slate-900 dark:text-white">UTC+05:30</span>
+            <span class="text-xs text-slate-500">India Standard Time (IST)</span>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            Synchronous collaboration overlap across North America (mornings) and APAC/EMEA (afternoons and evenings).
+          </p>
+
+          <!-- Visual timeline schedule -->
+          <div class="pt-2">
+            <div class="flex justify-between text-[10px] font-mono text-slate-400 mb-1.5">
+              <span>08:00 IST</span>
+              <span class="text-primary font-bold">14:00 - 22:00 CORE</span>
+              <span>02:00 IST</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden flex">
+              <div class="w-1/4 h-full bg-slate-200 dark:bg-slate-700"></div>
+              <div class="w-1/2 h-full bg-gradient-to-r from-primary to-orange-400"></div>
+              <div class="w-1/4 h-full bg-slate-200 dark:bg-slate-700"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Unified Footer (Identical on all pages) -->
+  <footer class="w-full border-t border-slate-200/60 dark:border-slate-800/60 bg-white/50 dark:bg-slate-900/50 mt-16 transition-colors">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 grid grid-cols-1 md:grid-cols-12 gap-8">
+      
+      <div class="md:col-span-6 space-y-3">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-full bg-[#dc3c19] flex items-center justify-center text-white font-bold text-sm">
+            T
+          </div>
+          <span class="font-bold text-slate-900 dark:text-white text-base">Tarun</span>
+          <span class="text-xs font-mono text-slate-400">「探求」</span>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-sm leading-relaxed">
+          Crafted with curiosity. Building machine learning foundations and language tools.
+        </p>
+        <div class="text-xs text-slate-400 pt-2">
+          © 2026 Tarun. All rights reserved.
+        </div>
+      </div>
+
+      <div class="md:col-span-3 space-y-2">
+        <div class="text-xs font-mono font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+          Navigation
+        </div>
+        <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
+          <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
+          <li><a href="projects.html" class="hover:text-primary transition-colors">Projects</a></li>
+          <li><a href="blog.html" class="hover:text-primary transition-colors">Blog</a></li>
+          <li><a href="connect.html" class="hover:text-primary transition-colors">Connect</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-3 space-y-2">
+        <div class="text-xs font-mono font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+          Signal Network
+        </div>
+        <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
+          <!-- TODO: Update URLs -->
+          <li><a href="https://github.com/TODO-tarun" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors flex items-center gap-1.5">GitHub ↗</a></li>
+          <li><a href="https://linkedin.com/in/TODO-tarun" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors flex items-center gap-1.5">LinkedIn ↗</a></li>
+          <li><a href="https://x.com/TODO-tarun" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors flex items-center gap-1.5">X (Twitter) ↗</a></li>
+          <li><a href="feed.xml" class="hover:text-primary transition-colors flex items-center gap-1.5">RSS Feed</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Field Note — Tarun</title>
+  <meta name="description" content="Reading entry from Tarun's engineering log and language acquisition journals." />
+  
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Field Note — Tarun" />
+  <meta property="og:description" content="Engineering log and language acquisition breakdown." />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2005/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23dc3c19'/><text x='50' y='65' font-size='48' font-family='sans-serif' font-weight='bold' fill='white' text-anchor='middle'>T</text></svg>" />
+  <link rel="alternate" type="application/rss+xml" title="Tarun's Field Notes RSS Feed" href="feed.xml" />
+
+  <!-- Inline theme script -->
+  <script>
+    try {
+      const theme = localStorage.getItem('tarun-theme') || 
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if (theme === 'dark') document.documentElement.classList.add('dark');
+      else document.documentElement.classList.remove('dark');
+    } catch(e) {}
+  </script>
+
+  <!-- Tailwind CSS & Shared Assets -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/tailwind-config.js"></script>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body class="bg-[#faf9f6] text-[#111c2d] dark:bg-[#0b1120] dark:text-[#f1f5f9] min-h-screen flex flex-col font-sans transition-colors duration-200">
+
+  <!-- Accessible Skip to Content Link -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 px-4 py-2 bg-primary text-white font-medium rounded-full shadow-lg">
+    Skip to main content
+  </a>
+
+  <!-- Unified Header -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200/60 dark:border-slate-800/60 transition-colors">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Brand & Logo -->
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="flex items-center gap-3 group" aria-label="Tarun homepage">
+          <div class="w-9 h-9 rounded-full bg-[#dc3c19] flex items-center justify-center text-white font-bold text-lg shadow-sm group-hover:scale-105 transition-transform">
+            T
+          </div>
+          <div class="flex flex-col">
+            <div class="flex items-center gap-1.5">
+              <span class="font-bold tracking-tight text-slate-900 dark:text-white text-base">Tarun</span>
+              <span class="text-xs font-mono text-slate-400 dark:text-slate-500">「道」systems &amp; ai</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Open Status Pill -->
+        <div class="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800/80 border border-slate-200/60 dark:border-slate-700/60 text-xs text-slate-600 dark:text-slate-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Open to internships &amp; collabs</span>
+        </div>
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-1 bg-slate-100/90 dark:bg-slate-800/70 p-1.5 rounded-full border border-slate-200/60 dark:border-slate-700/50" aria-label="Main Navigation">
+        <a href="index.html" data-nav-page="home" class="px-4 py-1.5 rounded-full text-xs font-medium transition-colors">Home</a>
+        <a href="projects.html" data-nav-page="projects" class="px-4 py-1.5 rounded-full text-xs font-medium transition-colors">Projects</a>
+        <a href="blog.html" data-nav-page="blog" class="px-4 py-1.5 rounded-full text-xs font-medium transition-colors">Blog</a>
+        <a href="connect.html" data-nav-page="connect" class="px-4 py-1.5 rounded-full text-xs font-medium transition-colors">Connect</a>
+      </nav>
+
+      <!-- Right Action Controls -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button type="button" class="theme-toggle p-2 rounded-full text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle dark mode">
+          <svg class="icon-sun w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <svg class="icon-moon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+
+        <!-- Admin access button -->
+        <button type="button" class="admin-trigger-btn p-2 rounded-full text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="Admin access (Add/Delete)" aria-label="Admin settings">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+          </svg>
+        </button>
+
+        <a href="connect.html" class="inline-flex items-center justify-center px-4 py-2 rounded-full bg-[#dc3c19] hover:bg-[#b52603] text-white text-xs font-semibold shadow-sm hover:shadow transition-all">
+          Say Hello
+        </a>
+
+        <button id="mobile-menu-btn" type="button" class="md:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Open mobile navigation menu" aria-expanded="false">
+          <svg class="icon-menu-open w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg class="icon-menu-close w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 pt-3 pb-5 space-y-2">
+      <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-xs text-slate-600 dark:text-slate-300 mb-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>Open to internships &amp; collabs</span>
+      </div>
+      <a href="index.html" data-nav-page="home" class="block px-4 py-2 rounded-xl text-sm font-medium">Home</a>
+      <a href="projects.html" data-nav-page="projects" class="block px-4 py-2 rounded-xl text-sm font-medium">Projects</a>
+      <a href="blog.html" data-nav-page="blog" class="block px-4 py-2 rounded-xl text-sm font-medium">Blog</a>
+      <a href="connect.html" data-nav-page="connect" class="block px-4 py-2 rounded-xl text-sm font-medium">Connect</a>
+    </div>
+  </header>
+
+  <!-- Main Content (Comfortable Reading Width max-w-3xl) -->
+  <main id="main-content" class="flex-grow max-w-3xl w-full mx-auto px-4 sm:px-6 py-10 sm:py-14">
+    <!-- Post Dynamic Content rendered by assets/site.js based on ?slug= -->
+    <div id="post-dynamic-content" class="space-y-6">
+      <!-- Fallback skeleton while script initializes -->
+      <div class="animate-pulse space-y-4">
+        <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded w-1/4"></div>
+        <div class="h-8 bg-slate-200 dark:bg-slate-800 rounded w-3/4"></div>
+        <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded w-1/2"></div>
+        <div class="h-40 bg-slate-200 dark:bg-slate-800 rounded-2xl"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Unified Footer (Identical on all pages) -->
+  <footer class="w-full border-t border-slate-200/60 dark:border-slate-800/60 bg-white/50 dark:bg-slate-900/50 mt-16 transition-colors">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 grid grid-cols-1 md:grid-cols-12 gap-8">
+      
+      <div class="md:col-span-6 space-y-3">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-full bg-[#dc3c19] flex items-center justify-center text-white font-bold text-sm">
+            T
+          </div>
+          <span class="font-bold text-slate-900 dark:text-white text-base">Tarun</span>
+          <span class="text-xs font-mono text-slate-400">「探求」</span>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-sm leading-relaxed">
+          Crafted with curiosity. Building machine learning foundations and language tools.
+        </p>
+        <div class="text-xs text-slate-400 pt-2">
+          © 2026 Tarun. All rights reserved.
+        </div>
+      </div>
+
+      <div class="md:col-span-3 space-y-2">
+        <div class="text-xs font-mono font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+          Navigation
+        </div>
+        <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
+          <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
+          <li><a href="projects.html" class="hover:text-primary transition-colors">Projects</a></li>
+          <li><a href="blog.html" class="hover:text-primary transition-colors">Blog</a></li>
+          <li><a href="connect.html" class="hover:text-primary transition-colors">Connect</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-3 space-y-2">
+        <div class="text-xs font-mono font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+          Signal Network
+        </div>
+        <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
+          <!-- TODO: Update URLs -->
+          <li><a href="https://github.com/TODO-tarun" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors flex items-center gap-1.5">GitHub ↗</a></li>
+          <li><a href="https://linkedin.com/in/TODO-tarun" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors flex items-center gap-1.5">LinkedIn ↗</a></li>
+          <li><a href="https://x.com/TODO-tarun" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors flex items-center gap-1.5">X (Twitter) ↗</a></li>
+          <li><a href="feed.xml" class="hover:text-primary transition-colors flex items-center gap-1.5">RSS Feed</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="assets/site.js"></script>
+</body>
+</html>

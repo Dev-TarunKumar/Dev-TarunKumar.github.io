@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog &amp; Field Notes — Tarun</title>
+  <meta name="description" content="Documenting everything in the open: daily learning logs across ML &amp; languages, project devlogs, architectural breakdowns, and bite-sized TIL notes." />
+  
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ais-dev-augyuqszpsmsbda4prqfcf-121027493637.asia-east1.run.app/blog.html" />
+  <meta property="og:title" content="Blog &amp; Field Notes — Tarun" />
+  <meta property="og:description" content="Daily learning logs across machine learning, language acquisition, and devlogs." />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2005/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23dc3c19'/><text x='50' y='65' font-size='48' font-family='sans-serif' font-weight='bold' fill='white' text-anchor='middle'>T</text></svg>" />
+  <link rel="alternate" type="application/rss+xml" title="Tarun's Field Notes RSS Feed" href="feed.xml" />
+
+  <!-- Inline theme script -->
+  <script>
+    try {
+      const theme = localStorage.getItem('tarun-theme') || 
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if (theme === 'dark') document.documentElement.classList.add('dark');
+      else document.documentElement.classList.remove('dark');
+    } catch(e) {}
+  </script>
+
+  <!-- Tailwind CSS & Shared Assets -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/tailwind-config.js"></script>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body class="bg-[#faf9f6] text-[#111c2d] dark:bg-[#0b1120] dark:text-[#f1f5f9] min-h-screen flex flex-col font-sans transition-colors duration-200">
+
+  <!-- Accessible Skip to Content Link -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 px-4 py-2 bg-primary text-white font-medium rounded-full shadow-lg">
+    Skip to main content
+  </a>
+
+  <!-- Unified Header -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200/60 dark:border-slate-800/60 transition-colors">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Logo & Brand -->
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="flex items-center gap-3 group" aria-label="Tarun homepage">
+          <div class="w-9 h-9 rounded-full bg-[#dc3c19] flex items-center justify-center text-white font-bold text-lg shadow-sm group-hover:scale-105 transition-transform">
+            T
+          </div>
+          <div class="flex flex-col">
+            <div class="flex items-center gap-1.5">
+              <span class="font-bold tracking-tight text-slate-900 dark:text-white text-base">Tarun</span>
+              <span class="text-xs font-mono text-slate-400 dark:text-slate-500">「道」systems &amp; ai</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Open Status Pill -->
+        <div class="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800/80 border border-slate-200/60 dark:border-slate-700/60 text-xs text-slate-600 dark:text-slate-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Open to internships &amp; collabs</span>
+        </div>
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-1 bg-slate-100/90 dark:bg-slate-800/70 p-1.5 rounded-full border border-slate-200/60 dark:border-slate-700/50" aria-label="Main Navigation">
+        <a href="index.html" data-nav-page="home" class="px-4 py-1.5 rounded-full text-xs font-medium transition-colors">Home</a>
+        <a href="projects.html" data-nav-page="projects" class="px-4 py-1.5 rounded-full text-xs font-medium transition-colors">Projects</a>
+        <a href="blog.html" data-nav-page="blog" class="px-4 py-1.5 rounded-full text-xs font-medium transition-colors">Blog</a>
+        <a href="connect.html" data-nav-page="connect" class="px-4 py-1.5 rounded-full text-xs font-medium transition-colors">Connect</a>
+      </nav>
+
+      <!-- Right Action Controls -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button type="button" class="theme-toggle p-2 rounded-full text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle dark mode">
+          <svg class="icon-sun w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <svg class="icon-moon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+
+        <!-- Admin access button -->
+        <button type="button" class="admin-trigger-btn p-2 rounded-full text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="Admin access (Add/Delete)" aria-label="Admin settings">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+          </svg>
+        </button>
+
+        <a href="connect.html" class="inline-flex items-center justify-center px-4 py-2 rounded-full bg-[#dc3c19] hover:bg-[#b52603] text-white text-xs font-semibold shadow-sm hover:shadow transition-all">
+          Say Hello
+        </a>
+
+        <button id="mobile-menu-btn" type="button" class="md:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Open mobile navigation menu" aria-expanded="false">
+          <svg class="icon-menu-open w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg class="icon-menu-close w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 pt-3 pb-5 space-y-2">
+      <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-xs text-slate-600 dark:text-slate-300 mb-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>Open to internships &amp; collabs</span>
+      </div>
+      <a href="index.html" data-nav-page="home" class="block px-4 py-2 rounded-xl text-sm font-medium">Home</a>
+      <a href="projects.html" data-nav-page="projects" class="block px-4 py-2 rounded-xl text-sm font-medium">Projects</a>
+      <a href="blog.html" data-nav-page="blog" class="block px-4 py-2 rounded-xl text-sm font-medium">Blog</a>
+      <a href="connect.html" data-nav-page="connect" class="block px-4 py-2 rounded-xl text-sm font-medium">Connect</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content" class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 py-10 sm:py-14 space-y-12">
+
+    <!-- PAGE HEADER -->
+    <div class="space-y-4">
+      <div class="flex items-center gap-2 text-xs font-mono font-semibold text-secondary">
+        <span>「実験記録」</span>
+        <span>•</span>
+        <span>FIELD NOTES &amp; PUBLIC NOTEBOOK</span>
+      </div>
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Thoughts, systems &amp; orthography.
+          </h1>
+          <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
+            Documenting everything in the open: daily learning logs across ML &amp; languages, project devlogs, architectural breakdowns, and bite-sized TIL notes.
+          </p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="relative w-full md:w-72">
+          <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          <input type="text" id="blog-search-input" placeholder="Search notes, tags, or topics..." class="w-full pl-9 pr-4 py-2 rounded-full bg-white dark:bg-slate-850 border border-slate-200 dark:border-slate-700 text-xs text-slate-800 dark:text-slate-200 placeholder:text-slate-400 focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition-all" />
+        </div>
+      </div>
+
+      <!-- Filter Pills -->
+      <div class="flex flex-wrap items-center gap-2 pt-2">
+        <button type="button" data-filter="all" class="blog-filter-pill px-4 py-1.5 rounded-full text-xs font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-xs transition-colors">
+          All Posts (7)
+        </button>
+        <button type="button" data-filter="what i'm learning" class="blog-filter-pill px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 dark:bg-slate-850 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-slate-400 transition-colors">
+          What I'm Learning
+        </button>
+        <button type="button" data-filter="project devlog" class="blog-filter-pill px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 dark:bg-slate-850 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-slate-400 transition-colors">
+          Project Devlogs
+        </button>
+        <button type="button" data-filter="ai &amp; engineering" class="blog-filter-pill px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 dark:bg-slate-850 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-slate-400 transition-colors">
+          AI &amp; Engineering
+        </button>
+        <button type="button" data-filter="daily til" class="blog-filter-pill px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 dark:bg-slate-850 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-slate-400 transition-colors">
+          Daily TILs
+        </button>
+      </div>
+      <!-- Admin Action Slot -->
+      <div id="blog-admin-actions"></div>
+    </div>
+
+    <!-- FEATURED SPOTLIGHT ESSAY -->
+    <section class="relative p-6 sm:p-8 md:p-10 rounded-3xl bg-gradient-to-br from-orange-50/60 via-white to-indigo-50/60 dark:from-slate-850 dark:via-slate-850 dark:to-indigo-950/30 border border-orange-200/70 dark:border-slate-800 shadow-md">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-7 space-y-4">
+          <div class="flex flex-wrap items-center gap-2.5 text-xs">
+            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full font-bold bg-[#dc3c19] text-white">
+              <span>⚡</span>
+              <span>FEATURED SPOTLIGHT</span>
+            </span>
+            <span class="px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 font-mono text-[11px] font-semibold">
+              「日本語 &amp; 中文」
+            </span>
+            <span class="text-slate-400 font-mono text-[11px]">Jan 18, 2026 • 5 min read</span>
+          </div>
+
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">
+            Starting from Zero: Why I'm Learning Japanese and Mandarin Simultaneously
+          </h2>
+
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Exploring the cognitive synthesis of dual-orthography immersion, shared kanji/hanzi semantic anchors, and engineering a bidirectional spaced repetition engine for dual language fluency from day one.
+          </p>
+
+          <!-- Radical Synergies Callout Card -->
+          <div class="p-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-orange-200/80 dark:border-slate-800 shadow-xs flex items-start gap-3.5">
+            <div class="w-10 h-10 rounded-xl bg-orange-100 dark:bg-orange-950/60 text-primary font-bold text-lg flex items-center justify-center shrink-0">
+              日
+            </div>
+            <div>
+              <div class="text-[11px] font-mono font-bold text-primary uppercase tracking-wide">
+                RADICAL SYNERGIES: 日 (NICHI / RÌ)
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-0.5 leading-relaxed">
+                Sun, day, everyday diligence. Shared identical stroke sequence across both writing systems anchoring 420+ downstream compounds.
+              </p>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <a href="post.html?slug=starting-from-zero" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#dc3c19] hover:bg-[#b52603] text-white text-xs font-semibold shadow-xs transition-colors">
+              <span>Read Complete Essay</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-sm rounded-2xl overflow-hidden shadow-lg border border-slate-200/80 dark:border-slate-700/80">
+            <!-- Study photo asset -->
+            <img src="/public/assets/aistudio/Image_5_4dcb8bb9.jpeg" alt="Desk setup with Japanese kanji notebook and tablet" class="w-full h-64 object-cover" />
+            <div class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-white text-[11px] font-mono flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              <span>Dual-Engine Spaced Study</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ALL LOGS & FIELD NOTES FEED -->
+    <section class="space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-200/60 dark:border-slate-800 pb-3">
+        <div class="flex items-center gap-2">
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+            All Logs &amp; Field Notes
+          </h2>
+          <span id="blog-post-count" class="px-2.5 py-0.5 rounded-full text-xs font-mono bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+            6 items
+          </span>
+        </div>
+        <div class="text-xs font-mono text-slate-400 flex items-center gap-1">
+          <span>Chronological feed (newest first)</span>
+        </div>
+      </div>
+
+      <!-- Empty state when search produces 0 results -->
+      <div id="blog-empty-state" class="hidden py-16 text-center space-y-3">
+        <div class="text-3xl">📝</div>
+        <h3 class="text-base font-bold text-slate-800 dark:text-slate-200">No field notes match your filter.</h3>
+        <p class="text-xs text-slate-500">Try searching for other keywords or select "All Posts".</p>
+      </div>
+
+      <!-- Notes Grid: Dynamically rendered from storage (with fallback seed) -->
+      <div id="blog-posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- 1. Feb 28, 2026: The 365-Day Japanese Journey -->
+        <a href="post.html?slug=japanese-journey-day-1" 
+           class="blog-post-card p-6 rounded-3xl bg-white dark:bg-slate-850 border border-slate-200/80 dark:border-slate-800 shadow-xs hover-card flex flex-col justify-between group"
+           data-title="The 365-Day Japanese Journey: Day 1 Kickoff"
+           data-category="what i'm learning"
+           data-summary="Setting up the daily 90-minute routine, phonetic kana muscle memory, and configuring Anki decks powered by stroke-order mnemonics.">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-xs">
+              <span class="px-2.5 py-0.5 rounded-full font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300">
+                Study Journal
+              </span>
+              <span class="text-slate-400 font-mono text-[11px]">Feb 28, 2026</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors leading-snug">
+              The 365-Day Japanese Journey: Day 1 Kickoff
+            </h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed">
+              Setting up the daily 90-minute routine, phonetic kana muscle memory, and configuring Anki decks powered by stroke-order mnemonics.
+            </p>
+
+            <div class="p-3 rounded-2xl bg-sky-50/70 dark:bg-slate-900 border border-sky-100 dark:border-slate-800 text-[11px]">
+              <span class="font-bold text-sky-800 dark:text-sky-300">Target: JLPT N2</span>
+              <div class="text-slate-500 dark:text-slate-400 text-[10px] mt-0.5">Mastering Hiragana + Katakana muscle memory</div>
+            </div>
+          </div>
+
+          <div class="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
+            <span>3 min read</span>
+            <span class="font-semibold text-primary group-hover:underline flex items-center gap-1">Read Note →</span>
+          </div>
+        </a>
+
+        <!-- 2. Feb 22, 2026: Daily TIL: LoRA Rank Trade-offs -->
+        <!-- Fixed broken $r$ text to proper italic mathematical r -->
+        <a href="post.html?slug=lora-rank-tradeoffs" 
+           class="blog-post-card p-6 rounded-3xl bg-white dark:bg-slate-850 border border-slate-200/80 dark:border-slate-800 shadow-xs hover-card flex flex-col justify-between group"
+           data-title="Daily TIL: LoRA Rank Trade-offs & FlashAttention Intuitions"
+           data-category="daily til"
+           data-summary="Why scaling rank r from 8 to 64 yields diminishing returns on stylistic alignment, but dramatic spikes in memory overhead.">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-xs">
+              <span class="px-2.5 py-0.5 rounded-full font-semibold bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300">
+                Daily TIL
+              </span>
+              <span class="text-slate-400 font-mono text-[11px]">Feb 22, 2026</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors leading-snug">
+              Daily TIL: LoRA Rank Trade-offs &amp; FlashAttention Intuitions
+            </h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed">
+              Why scaling rank <em class="italic font-serif">r</em> from 8 to 64 yields diminishing returns on stylistic alignment, but dramatic spikes in memory overhead.
+            </p>
+
+            <div class="p-3 rounded-2xl bg-indigo-50/70 dark:bg-slate-900 border border-indigo-100 dark:border-slate-800 font-mono text-[11px] text-indigo-700 dark:text-indigo-300">
+              <code>r=16, alpha=32: sweet spot for attention query-key matrices</code>
+            </div>
+          </div>
+
+          <div class="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
+            <span>4 min read</span>
+            <span class="font-semibold text-primary group-hover:underline flex items-center gap-1">Read Note →</span>
+          </div>
+        </a>
+
+        <!-- 3. Feb 19, 2026: Chinese Tones Contour Intuition -->
+        <a href="post.html?slug=chinese-tones-contour" 
+           class="blog-post-card p-6 rounded-3xl bg-white dark:bg-slate-850 border border-slate-200/80 dark:border-slate-800 shadow-xs hover-card flex flex-col justify-between group"
+           data-title="Chinese Tones Contour Intuition: Singing Pitch Analogy"
+           data-category="what i'm learning"
+           data-summary="Treating the four tones as musical vocal warm-up intervals: First (high steady soprano), Second (questioning rise), Third (low dip), Fourth (sharp command).">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-xs">
+              <span class="px-2.5 py-0.5 rounded-full font-semibold bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300">
+                What I'm Learning
+              </span>
+              <span class="text-slate-400 font-mono text-[11px]">Feb 19, 2026</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors leading-snug">
+              Chinese Tones Contour Intuition: Singing Pitch Analogy
+            </h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed">
+              Treating the four tones as musical vocal warm-up intervals: First (high steady soprano), Second (questioning rise), Third (low dip), Fourth (sharp command).
+            </p>
+
+            <div class="p-3 rounded-2xl bg-amber-50/70 dark:bg-slate-900 border border-amber-100 dark:border-slate-800 flex items-center justify-around font-mono text-[11px] text-slate-700 dark:text-slate-300">
+              <span>1: (55) ˉ</span>
+              <span>2: (35) ˊ</span>
+              <span>3: (214) ˇ</span>
+              <span>4: (51) ˋ</span>
+            </div>
+          </div>
+
+          <div class="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
+            <span>3 min read</span>
+            <span class="font-semibold text-primary group-hover:underline flex items-center gap-1">Read Note →</span>
+          </div>
+        </a>
+
+        <!-- 4. Feb 14, 2026: Building PolyglotLens -->
+        <a href="post.html?slug=building-polyglotlens" 
+           class="blog-post-card p-6 rounded-3xl bg-white dark:bg-slate-850 border border-slate-200/80 dark:border-slate-800 shadow-xs hover-card flex flex-col justify-between group"
+           data-title="Building PolyglotLens: From Idea to Working Vision-OCR Model"
+           data-category="project devlog"
+           data-summary="An end-to-end devlog detailing dataset distillation for historical vertical Japanese scripts and dense handwritten Chinese characters.">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-xs">
+              <span class="px-2.5 py-0.5 rounded-full font-semibold bg-orange-50 dark:bg-orange-950/40 text-primary dark:text-orange-300">
+                Project Devlog
+              </span>
+              <span class="text-slate-400 font-mono text-[11px]">Feb 14, 2026</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors leading-snug">
+              Building PolyglotLens: From Idea to Working Vision-OCR Model
+            </h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed">
+              An end-to-end devlog detailing dataset distillation for historical vertical Japanese scripts and dense handwritten Chinese characters.
+            </p>
+
+            <div class="p-3 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[11px] text-slate-600 dark:text-slate-400">
+              <span>OpenCV contouring &amp; glyph bounding normalization</span>
+            </div>
+          </div>
+
+          <div class="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
+            <span>6 min read</span>
+            <span class="font-semibold text-primary group-hover:underline flex items-center gap-1">Read Note →</span>
+          </div>
+        </a>
+
+        <!-- 5. Feb 10, 2026: Architecting HanziFlow -->
+        <a href="post.html?slug=architecting-hanziflow" 
+           class="blog-post-card p-6 rounded-3xl bg-white dark:bg-slate-850 border border-slate-200/80 dark:border-slate-800 shadow-xs hover-card flex flex-col justify-between group"
+           data-title="Architecting HanziFlow: Fast Local Radicals Storage with SQLite"
+           data-category="project devlog"
+           data-summary="Storing 214 Kangxi radicals, stroke decompositions, and audio waveforms offline in browser WASM threads.">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-xs">
+              <span class="px-2.5 py-0.5 rounded-full font-semibold bg-indigo-50 dark:bg-indigo-950/40 text-secondary dark:text-indigo-300">
+                Project Devlog
+              </span>
+              <span class="text-slate-400 font-mono text-[11px]">Feb 10, 2026</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors leading-snug">
+              Architecting HanziFlow: Fast Local Radicals Storage with SQLite
+            </h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed">
+              Storing 214 Kangxi radicals, stroke decompositions, and audio waveforms offline in browser WASM threads.
+            </p>
+
+            <div class="p-3 rounded-2xl bg-indigo-50/50 dark:bg-slate-900 border border-indigo-100 dark:border-slate-800 text-[11px] text-secondary dark:text-indigo-300 font-mono">
+              <span>Zero-latency local-first WASM SQLite storage</span>
+            </div>
+          </div>
+
+          <div class="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
+            <span>5 min read</span>
+            <span class="font-semibold text-primary group-hover:underline flex items-center gap-1">Read Note →</span>
+          </div>
+        </a>
+
+        <!-- 6. Feb 04, 2026: Demystifying Small Language Models -->
+        <a href="post.html?slug=demystifying-small-language-models" 
+           class="blog-post-card p-6 rounded-3xl bg-white dark:bg-slate-850 border border-slate-200/80 dark:border-slate-800 shadow-xs hover-card flex flex-col justify-between group"
+           data-title="Demystifying Small Language Models: What Actually Happens During Fine-Tuning"
+           data-category="ai &amp; engineering"
+           data-summary="Peeling back the math of rank-decomposition matrices, low-rank adaptations, gradient flow across frozen weights, and testing local inferences with 1B-3B models.">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-xs">
+              <span class="px-2.5 py-0.5 rounded-full font-semibold bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300">
+                AI &amp; Engineering
+              </span>
+              <span class="text-slate-400 font-mono text-[11px]">Feb 04, 2026</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors leading-snug">
+              Demystifying Small Language Models: What Actually Happens During Fine-Tuning
+            </h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed">
+              Peeling back the math of rank-decomposition matrices, low-rank adaptations, gradient flow across frozen weights, and testing local inferences with 1B-3B models.
+            </p>
+
+            <div class="p-3 rounded-2xl bg-rose-50/50 dark:bg-slate-900 border border-rose-100 dark:border-slate-800 text-[11px] text-rose-700 dark:text-rose-300 font-mono">
+              <span>PEFT gradient flow in 1B-3B parameter regimes</span>
+            </div>
+          </div>
+
+          <div class="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
+            <span>7 min read</span>
+            <span class="font-semibold text-primary group-hover:underline flex items-center gap-1">Read Note →</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Unified Footer (Identical on all pages) -->
+  <footer class="w-full border-t border-slate-200/60 dark:border-slate-800/60 bg-white/50 dark:bg-slate-900/50 mt-16 transition-colors">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 grid grid-cols-1 md:grid-cols-12 gap-8">
+      
+      <div class="md:col-span-6 space-y-3">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-full bg-[#dc3c19] flex items-center justify-center text-white font-bold text-sm">
+            T
+          </div>
+          <span class="font-bold text-slate-900 dark:text-white text-base">Tarun</span>
+          <span class="text-xs font-mono text-slate-400">「探求」</span>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-sm leading-relaxed">
+          Crafted with curiosity. Building machine learning foundations and language tools.
+        </p>
+        <div class="text-xs text-slate-400 pt-2">
+          © 2026 Tarun. All rights reserved.
+        </div>
+      </div>
+
+      <div class="md:col-span-3 space-y-2">
+        <div class="text-xs font-mono font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+          Navigation
+        </div>
+        <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
+          <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
+          <li><a href="projects.html" class="hover:text-primary transition-colors">Projects</a></li>
+          <li><a href="blog.html" class="hover:text-primary transition-colors">Blog</a></li>
+          <li><a href="connect.html" class="hover:text-primary transition-colors">Connect</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-3 space-y-2">
+        <div class="text-xs font-mono font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+          Signal Network
+        </div>
+        <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
+          <!-- TODO: Update URLs -->
+          <li><a href="https://github.com/TODO-tarun" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors flex items-center gap-1.5">GitHub ↗</a></li>
+          <li><a href="https://linkedin.com/in/TODO-tarun" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors flex items-center gap-1.5">LinkedIn ↗</a></li>
+          <li><a href="https://x.com/TODO-tarun" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors flex items-center gap-1.5">X (Twitter) ↗</a></li>
+          <li><a href="feed.xml" class="hover:text-primary transition-colors flex items-center gap-1.5">RSS Feed</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="assets/site.js"></script>
+</body>
+</html>
